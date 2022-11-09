@@ -6,9 +6,9 @@ from university.models import University
 class UniversityListView(ListView):
     model = University
     template_name = 'university_list.html'
-    context_object_name = 'univercities'
+    context_object_name = 'universities'
 
 class UniversityDetailView(DetailView):
     model = University
     template_name = 'university_detail.html'
-    context_object_name = 'univercity'
+    context_object_name = 'university'

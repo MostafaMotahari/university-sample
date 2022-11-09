@@ -11,6 +11,7 @@ List
   {% for university in universities %}
   <li>
     {{ university.name }}
+    <a href="{% url 'university_detail' university.id %}">More details</a>
   </li>
   {% endfor %}
 </ul>
