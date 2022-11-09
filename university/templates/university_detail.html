@@ -7,6 +7,10 @@
     text-align: left;
     border: 1px solid black;
   }
+  img {
+    max-width: 50vh;
+    max-height: 50vh;
+  }
 </style>
 {% endblock %}
 
@@ -22,12 +26,13 @@ university.name
   <p>{{ university.overview }}</p>
   
   <div class="card">
+    
     <h4>More details:</h4>
     <p>
       Location: {{ university.city.name }}, {{ university.city.country.name }}<br>
       Type: {{ university.type }}<br>
       Acronym: {{ university.acronym }}<br>
-      Website: <a href="{{ university.website }}">Click me</a><br>
+      Website: <a href="{{ university.website_url }}">Click me</a><br>
       Acceptance rate: {{ university.acceptance_rate }}<br>
       Total students: {{ university.total_students }}<br>
       International students: {{ university.international_students }}<br>
