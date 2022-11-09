@@ -26,12 +26,35 @@ List
 
 {% block content %}
 <h1>Universities</h1>
-<ul>
-  {% for university in universities %}
-  <li>
-    {{ university.name }}
-    <a href="{% url 'university_detail' university.id %}">More details</a>
-  </li>
-  {% endfor %}
-</ul>
+<div class="filter">
+  <h3>Sort By</h3>
+  <form method="get">
+    {{ filter.form.as_p }}
+    <input type="submit">
+  </form>
+</div>
+
+<div class="university-list">
+  <h3>University List</h3>
+  <ul>
+    {% for university in filter.qs %}
+    <li>
+      {{ university.name }}
+      <a href="{% url 'university_detail' university.id %}">More details</a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="paginator">
+  {% if page_obj.has_next %}
+  <a href="?page={{ page_obj.next_page_number }}">Next</a>
+  {% endif %}
+  <span>
+    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+  </span>
+  {% if page_obj.has_previous %}
+  <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+</div>
+{% endif %}
 {% endblock %}

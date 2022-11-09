@@ -1,5 +1,3 @@
-from tabnanny import verbose
-from wsgiref.validate import validator
 from django.db import models
 from django.core.validators import MaxValueValidator
 
