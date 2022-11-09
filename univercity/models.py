@@ -3,8 +3,24 @@ from django.db import models
 from django.core.validators import MaxValueValidator
 
 # Create your models here.
-class UniversityModel(models.Model):
-    city = models.CharField(max_length=100)
+class Country(models.Model):
+    name = models.CharField(max_length=50)
+    code = models.CharField(max_length=2)
+
+    def __str__(self):
+        return self.name
+
+
+class City(models.Model):
+    name = models.CharField(max_length=50)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+
+class University(models.Model):
+    city = models.ForeignKey(City, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     acronym = models.CharField(max_length=10)
     logo = models.ImageField(upload_to='images/univercity_logos')
