@@ -1,12 +1,28 @@
 {% extends "_base.html" %}
 {% load static %}
 
+{% block style %}
+<style>
+  a {
+    text-decoration: none;
+    color: black;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 3px;
+  }
+  a:hover {
+    background-color: black;
+    color: white;
+  }
+</style>
+{% endblock %}
+
 {% block name %}
 List
 {% endblock %}
 
 {% block content %}
-<h1>Univercities</h1>
+<h1>Universities</h1>
 <ul>
   {% for university in universities %}
   <li>

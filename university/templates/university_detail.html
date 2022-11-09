@@ -1,0 +1,38 @@
+{% extends "_base.html" %}
+{% load static %}
+
+{% block style %}
+<style>
+  p {
+    text-align: left;
+    border: 1px solid black;
+  }
+</style>
+{% endblock %}
+
+{% block name %}
+university.name
+{% endblock %}
+
+{% block content %}
+<div class="content">
+  <h1>{{ university.name }} (Since {{ university.since }})</h1>
+  
+  <img src="{{ university.logo.url }}" alt="{{ university.acronym }} logo">
+  <p>{{ university.overview }}</p>
+  
+  <div class="card">
+    <h4>More details:</h4>
+    <p>
+      Location: {{ university.city.name }}, {{ university.city.country.name }}<br>
+      Type: {{ university.type }}<br>
+      Acronym: {{ university.acronym }}<br>
+      Website: <a href="{{ university.website }}">Click me</a><br>
+      Acceptance rate: {{ university.acceptance_rate }}<br>
+      Total students: {{ university.total_students }}<br>
+      International students: {{ university.international_students }}<br>
+    </p>
+
+  </div>
+</div>
+{% endblock %}
