@@ -28,16 +28,35 @@ List
 <h1>Universities</h1>
 <div class="filter">
   <h3>Sort By</h3>
-  <form method="get">
-    {{ filter.form.as_p }}
-    <input type="submit">
+  <form method="get" action="{% url 'university_list' %}">
+
+    <label for="name">Name: </label>
+    <input type="text" name="name" id="name">
+
+    <label for="country">Country: </label>
+    <select name="country" id="country">
+      <option value="">----</option>
+      {% for country in countries %}
+      <option value="{{ country.name }}">{{ country.name }}</option>
+      {% endfor %}
+    </select>
+
+    <label for="city">City: </label>
+    <select name="city" id="city">
+      <option value="">----</option>
+      {% for city in cities %}
+      <option value="{{ city.name }}">{{ city.name }}</option>
+      {% endfor %}
+    </select>
+
+    <button type="submit">Apply</button>
   </form>
 </div>
 
 <div class="university-list">
   <h3>University List</h3>
   <ul>
-    {% for university in filter.qs %}
+    {% for university in universities %}
     <li>
       {{ university.name }}
       <a href="{% url 'university_detail' university.id %}">More details</a>
@@ -47,14 +66,14 @@ List
 </div>
 
 <div class="paginator">
-  {% if page_obj.has_next %}
-  <a href="?page={{ page_obj.next_page_number }}">Next</a>
+  {% if universities.has_next %}
+  <a href="?page={{ universities.next_page_number }}">Next</a>
   {% endif %}
   <span>
-    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+    Page {{ universities.number }} of {{ universities.paginator.num_pages }}
   </span>
-  {% if page_obj.has_previous %}
-  <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+  {% if universities.has_previous %}
+  <a href="?page={{ universities.previous_page_number }}">Previous</a>
+  {% endif %}
 </div>
-{% endif %}
 {% endblock %}

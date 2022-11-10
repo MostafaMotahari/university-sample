@@ -1,6 +1,4 @@
 from django.urls import path
-from django_filters.views import FilterView
-from university.filters import UniversityFilter
 from .views import template
 
 urlpatterns = [
